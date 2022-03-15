@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="75281" started-at="2022-03-11T17:50:30 IST" finished-at="2022-03-11T17:51:45 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="75281" started-at="2022-03-11T17:50:30 IST" finished-at="2022-03-11T17:51:45 IST">
+      <class name="mobilecare.mobilecare">
+        <test-method status="PASS" signature="click()[pri:0, instance:mobilecare.mobilecare@710726a3]" name="click" is-config="true" duration-ms="2796" started-at="2022-03-11T17:50:30 IST" finished-at="2022-03-11T17:50:33 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- click -->
+        <test-method status="PASS" signature="domain()[pri:0, instance:mobilecare.mobilecare@710726a3]" name="domain" duration-ms="180" started-at="2022-03-11T17:50:33 IST" finished-at="2022-03-11T17:50:33 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- domain -->
+        <test-method status="PASS" signature="register()[pri:1, instance:mobilecare.mobilecare@710726a3]" name="register" duration-ms="5187" started-at="2022-03-11T17:50:33 IST" finished-at="2022-03-11T17:50:38 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- register -->
+        <test-method status="PASS" signature="login()[pri:2, instance:mobilecare.mobilecare@710726a3]" name="login" duration-ms="26409" started-at="2022-03-11T17:50:38 IST" finished-at="2022-03-11T17:51:04 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="contacts()[pri:3, instance:mobilecare.mobilecare@710726a3]" name="contacts" duration-ms="32462" started-at="2022-03-11T17:51:04 IST" finished-at="2022-03-11T17:51:37 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- contacts -->
+        <test-method status="PASS" signature="temp()[pri:4, instance:mobilecare.mobilecare@710726a3]" name="temp" duration-ms="8202" started-at="2022-03-11T17:51:37 IST" finished-at="2022-03-11T17:51:45 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- temp -->
+      </class> <!-- mobilecare.mobilecare -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
