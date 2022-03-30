@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +26,7 @@ public class mobilecare extends base
 
 	public ChromeDriver driver;
 	public ChromeOptions options= new ChromeOptions();  // For handled permission pop-up.
+	public WebDriverWait ws;
 	@BeforeTest
 	public void click()
 	{
@@ -129,7 +132,7 @@ public class mobilecare extends base
 //	WebElement mes= driver.findElement(By.xpath("//textarea[@id='searchcontactbox' and @tabindex='1']"));
 	//	Thread.sleep(3000);
 	//	mes.sendKeys("manoj singh");
-		WebDriverWait ws = new WebDriverWait(driver, 10);
+		ws = new WebDriverWait(driver, 10);
 		WebElement mes = ws.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//textarea[@id='searchcontactbox' and @tabindex='1']")));
 		mes.sendKeys("manoj singh");
 		
@@ -137,33 +140,127 @@ public class mobilecare extends base
 		driver.findElement(By.id("sendMessageThread")).click();
 		Thread.sleep(3000);
 		
-		base.ab(driver,".\\screenshot\\mob1.png");
+		base.ab(driver,".\\screenshot\\mob2.png");
 		Thread.sleep(3000);
 	}
 	@Test(priority=4)
 	public void temp() throws InterruptedException
 	{
-		driver.navigate().refresh();
+		//driver.navigate().refresh();
 		Thread.sleep(5000);
-		WebElement template = driver.findElement(By.className("defaultTemplatesSelect"));
-	boolean s=	template.isSelected();
-		if (s==true)
-		{
+		WebElement template = driver.findElement(By.xpath("//*[@class='defaultTemplatesSelect'and @id='defaultTemplatesSelect']"));
+//	boolean s=	template.isDisplayed();
+//	if (s==true)
+	//	{
 	//	Thread.sleep(3000);
 	//	template.click();
-     //	Thread.sleep(3000);
-		Select select = new Select(template);
-		select.selectByValue("Admit/Transfer Form.");
-		}
-		else
-		{
-			System.out.println("not selected");
-		}
+    // 	Thread.sleep(3000);
+		//template.click();
+	//	}
+	//else
+	//	{
+		//	System.out.println("not selected");
+	//	}
+	//	Thread.sleep(3000);
+		
+		Select s = new Select(template);
+		s.selectByValue("Busy right now, talk to you later");
+		
+		
+		
+	}
+	@Test(priority=5)
+	public void patient() throws InterruptedException
+	{
+		Thread.sleep(3000);
+		driver.findElement(By.id("mypatientnav")).click();
+		
+		Thread.sleep(2000);
+		driver.findElement(By.id("headSearch")).sendKeys("deepansh");
+		
+		Thread.sleep(2000);
+		driver.findElement(By.id("headSearchButton")).click();
+		
+		Thread.sleep(2000);
+		driver.findElement(By.className("SideMenu")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id='radiologynav']/a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id='view_radioDetail']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id='attachchild_0']")).click();
+		Thread.sleep(8000);
+		WebElement com= driver.findElement(By.id("token-input-contactsList"));
+		ws.until(ExpectedConditions.elementToBeClickable(com));
+		com.click();
+		Thread.sleep(2000);
+		com.sendKeys("Manoj");
+		Thread.sleep(2000);
+		
+		WebElement ch = driver.findElement(By.xpath("/html/body/div[13]/ul/li[1]/a/div"));
+		
+		Actions ac = new Actions(driver);
+		Thread.sleep(2000);
+		ch.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id='searchcontactbox']")).sendKeys("Radiology");
+		Thread.sleep(2000);
+		driver.findElement(By.id("sendmessage")).click();
+		Thread.sleep(5000);
+		
+	}
+	@Test(priority=6)
+	public void alerts() throws InterruptedException 
+	{
+		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	WebElement alert=	driver.findElement(By.id("myalertsnav"));
+	ws.until(ExpectedConditions.elementToBeClickable(alert));
+	Thread.sleep(5000);
+	alert.click();
+	try {
+		alert=	driver.findElement(By.id("myalertsnav"));
+		ws.until(ExpectedConditions.elementToBeClickable(alert));
+		Thread.sleep(5000);
+		alert.click();
+	}
+	catch (ElementClickInterceptedException e) 
+	{
+		alert=	driver.findElement(By.id("myalertsnav"));
+		ws.until(ExpectedConditions.elementToBeClickable(alert));
+		Thread.sleep(5000);
+		alert.click();
+	}
+	
+	
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,800)");
+		Thread.sleep(2000);
+		js.executeScript("window.scrollBy(0,-800)");
+		Thread.sleep(2000);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id='myalertattachmentDiv_0']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@class='breadcrumb' and @ng-show='backdisplay == 1']")).click();
+		
+		
+	}
+	@Test(priority=7)
+	public void logout() throws InterruptedException
+	{
+		Thread.sleep(5000);
+		driver.findElement(By.id("loggedUserInfo")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id='logout']/a")).click();
+		
+		
 		
 	}
 	
 	
+	
 	}
+
 	
 	
 
