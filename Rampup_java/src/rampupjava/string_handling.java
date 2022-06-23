@@ -12,7 +12,7 @@ public class string_handling {
 		for(i=s1.length-1;i>=0;i-- )
 		{
 		
-			 //ch = s.charAt(i);
+			// ch = s.charAt(i);
 			 
 			// System.out.print(ch);
 			

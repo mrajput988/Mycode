@@ -10,6 +10,7 @@ public void with_out_body()
 	{
 		ClassB manoj = new ClassB();
 		manoj.with_out_body();
+	//	manoj.with_body();
 		}
 	
 }
